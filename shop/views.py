@@ -21,8 +21,8 @@ class TestimonialView(TemplateView):
 class ShopView(TemplateView):
     template_name = "shop/shop.html"
 
-# class View(TemplateView):
-#     template_name = "why.html"
+class CartegoriesView(TemplateView):
+    template_name = "shop/categories.html"
 
 # class AboutView(TemplateView):
 #     template_name = "why.html"
