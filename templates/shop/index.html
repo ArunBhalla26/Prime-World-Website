@@ -28,9 +28,13 @@
                     </div>
                   </div>
                   <div class="col-md-5 ">
+
+                    {% comment %} img box start\ {% endcomment %}
                     <div class="img-box">
                       <img src="{% static 'images/slider-img.png' %}" alt="" />
                     </div>
+
+                    {% comment %} img box end {% endcomment %}
                   </div>
                 </div>
               </div>
@@ -105,7 +109,7 @@
   </div>
   <!-- end hero area -->
 
-  <!-- shop section -->
+  <!-- Clothing section -->
 
   <section class="shop_section layout_padding">
     <div class="container">
@@ -115,20 +119,23 @@
         </h2>
       </div>
       <div class="row">
+        {% for c in clothing  %}
+
         <div class="col-sm-6 col-md-4 col-lg-3">
+
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="{% static 'images/p1.png' %}" alt="">
+                <img src="{{c.product_image.url}}" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Ring
+                 {{c.title}}
                 </h6>
                 <h6>
-                  Price
+                  {% comment %} Price {% endcomment %}
                   <span>
-                    $200
+                    ₹{{c.list_price}}
                   </span>
                 </h6>
               </div>
@@ -140,181 +147,7 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p2.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p3.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p4.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p5.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $95
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p6.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $70
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p7.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $400
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="{% static 'images/p8.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $450
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <div class="btn-box">
         <a href="">
@@ -324,11 +157,212 @@
     </div>
   </section>
 
-  <!-- end shop section -->
+  <!-- end Clothing section -->
+
+  
+  <!-- best in electronics start -->
+
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Best Deals in Electronics 
+        </h2>
+      </div>
+      <div class="row">
+        {% for e in electronics  %}
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{{e.product_image.url}}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                 {{e.title}}
+                </h6>
+                <h6>
+                  {% comment %} Price {% endcomment %}
+                  <span>
+                    ₹{{e.list_price}}
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- best in electronics end -->
+
+<!-- For Your Beauty & Personal Care  start-->
+
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        For Beauty & Personal Care
+      </h2>
+    </div>
+    <div class="row">
+      {% for b in beauty  %}
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+
+        <div class="box">
+          <a href="">
+            <div class="img-box">
+              <img src="{{b.product_image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h6>
+               {{b.title}}
+              </h6>
+              <h6>
+                {% comment %} Price {% endcomment %}
+                <span>
+                  ₹{{b.list_price}}
+                </span>
+              </h6>
+            </div>
+            <div class="new">
+              <span>
+                New
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="btn-box">
+      <a href="">
+        View All Products
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- For Your Beauty & Personal Care  end-->
+
+<!-- Grocery  start-->
+
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Health And Grocery
+      </h2>
+    </div>
+    <div class="row">
+      {% for g in grocery  %}
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+
+        <div class="box">
+          <a href="">
+            <div class="img-box">
+              <img src="{{g.product_image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h6>
+               {{g.title}}
+              </h6>
+              <h6>
+                {% comment %} Price {% endcomment %}
+                <span>
+                  ₹{{g.list_price}}
+                </span>
+              </h6>
+            </div>
+            <div class="new">
+              <span>
+                New
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="btn-box">
+      <a href="">
+        View All Products
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Grocery  end-->
+
+<!-- Jewelry  start-->
+
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Jewelery And Artificial Ornaments
+      </h2>
+    </div>
+    <div class="row">
+      {% for j in jewelery  %}
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+
+        <div class="box">
+          <a href="">
+            <div class="img-box">
+              <img src="{{j.product_image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h6>
+               {{j.title}}
+              </h6>
+              <h6>
+                {% comment %} Price {% endcomment %}
+                <span>
+                  ₹{{j.list_price}}
+                </span>
+              </h6>
+            </div>
+            <div class="new">
+              <span>
+                New
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="btn-box">
+      <a href="">
+        View All Products
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Jewelry  end-->
 
   <!-- saving section -->
-
+{% comment %} 
   <section class="saving_section ">
+
     <div class="box">
       <div class="container-fluid">
         <div class="row">
@@ -361,7 +395,45 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
+
+<section class="saving_section ">
+  <div class="box">
+    <div class="container-fluixd">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="img-box">
+            <img src="{% static 'images/saving-img.png' %}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Best Savings on <br>
+                new arrivals
+              </h2>
+            </div>
+            <p>
+              Qui ex dolore at repellat, quia neque doloribus omnis adipisci, ipsum eos odio fugit ut eveniet blanditiis praesentium totam non nostrum dignissimos nihil eius facere et eaque. Qui, animi obcaecati.
+            </p>
+            <div class="btn-box">
+              <a href="#" class="btn1">
+                Buy Now
+              </a>
+              <a href="#" class="btn2">
+                See More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
   <!-- end saving section -->
 

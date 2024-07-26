@@ -52,6 +52,8 @@ ORDER_STATUS_CHOICES = (
 
 CATEGORY_CHOICES = (
         ('Electronics', 'Electronics'),
+        ('Mobile' , 'Mobile'),
+        ('Laptop' , 'Laptop'),
         ('Clothing', 'Clothing'),
         ('Home & Garden', 'Home & Garden'),
         ('Books', 'Books'),
@@ -59,8 +61,6 @@ CATEGORY_CHOICES = (
         ('Sports & Outdoors', 'Sports & Outdoors'),
         ('Beauty & Personal Care', 'Beauty & Personal Care'),
         ('Health & Household', 'Health & Household'),
-        ('Automotive', 'Automotive'),
-        ('Office Supplies', 'Office Supplies'),
         ('Jewelry', 'Jewelry'),
         ('Pet Supplies', 'Pet Supplies'),
         ('Music', 'Music'),
@@ -97,7 +97,7 @@ class Product(models.Model):
     product_image = models.ImageField( upload_to='product_images')
 
     def __str__(self):
-        return self.id
+        return str(self.id)
     
 class Cart(models.Model):
     user = models. ForeignKey(User, on_delete=models.CASCADE)

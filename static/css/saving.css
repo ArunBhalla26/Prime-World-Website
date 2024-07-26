@@ -1,0 +1,45 @@
+/* Adjustments for the saving section */
+.saving_section .box {
+    padding: 30px 0;
+  }
+  
+  .saving_section .img-box img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .saving_section .detail-box {
+    padding: 20px;
+  }
+  
+  .saving_section .detail-box .heading_container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .saving_section .detail-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .saving_section .btn-box {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .saving_section .btn-box .btn1,
+  .saving_section .btn-box .btn2 {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .saving_section .container-fluid {
+    padding: 0 15px;
+  }
+  
+  .saving_section .row {
+    margin: 0;
+  }
+  
+  

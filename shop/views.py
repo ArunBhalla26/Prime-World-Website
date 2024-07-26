@@ -1,13 +1,21 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from .models  import *
 
 
 # Create your views here.
 
 
 class HomeView(TemplateView):
-    template_name = "shop/index.html"    
-
+    def get (self , request):
+        clothing = Product.objects.filter(category = 'Clothing')
+        electronics = Product.objects.filter(category = 'Electronics')
+        beauty = Product.objects.filter(category = 'Beauty & Personal Care')
+        grocery = Product.objects.filter(category = 'Grocery')
+        jewelry = Product.objects.filter(category = 'Jewelry')
+        
+        return render(request , "shop/index.html" , {'clothing' : clothing[:4] ,'electronics' : electronics[:4] , 'beauty': beauty[:4] ,'jewelry': jewelry[:4] , 'grocery': grocery[:4] }) 
+    # template_name = "shop/index.html"    
 
 class AboutView(TemplateView):
     template_name = "shop/why.html"
@@ -24,5 +32,3 @@ class ShopView(TemplateView):
 class CartegoriesView(TemplateView):
     template_name = "shop/categories.html"
 
-# class AboutView(TemplateView):
-#     template_name = "why.html"
