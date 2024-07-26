@@ -124,7 +124,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
 
           <div class="box">
-            <a href="">
+            <a href="{% url 'ppage' c.id %}">
               <div class="img-box">
                 <img src="{{c.product_image.url}}" alt="">
               </div>
@@ -175,7 +175,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
 
           <div class="box">
-            <a href="">
+            <a href="{% url 'ppage' e.id %}">
               <div class="img-box">
                 <img src="{{e.product_image.url}}" alt="">
               </div>
@@ -224,7 +224,7 @@
       <div class="col-sm-6 col-md-4 col-lg-3">
 
         <div class="box">
-          <a href="">
+          <a href="{% url 'ppage' b.id %}">
             <div class="img-box">
               <img src="{{b.product_image.url}}" alt="">
             </div>
@@ -274,7 +274,7 @@
       <div class="col-sm-6 col-md-4 col-lg-3">
 
         <div class="box">
-          <a href="">
+          <a href="{% url 'ppage' g.id %}">
             <div class="img-box">
               <img src="{{g.product_image.url}}" alt="">
             </div>
@@ -319,12 +319,12 @@
       </h2>
     </div>
     <div class="row">
-      {% for j in jewelery  %}
+      {% for j in jewelry  %}
 
       <div class="col-sm-6 col-md-4 col-lg-3">
 
         <div class="box">
-          <a href="">
+          <a href="{% url 'ppage' j.id %}">
             <div class="img-box">
               <img src="{{j.product_image.url}}" alt="">
             </div>
@@ -360,7 +360,7 @@
 <!-- Jewelry  end-->
 
   <!-- saving section -->
-{% comment %} 
+<!-- {% comment %} 
   <section class="saving_section ">
 
     <div class="box">
@@ -395,7 +395,7 @@
         </div>
       </div>
     </div>
-  </section> {% endcomment %}
+  </section> {% endcomment %} -->
 
 <section class="saving_section ">
   <div class="box">

@@ -32,3 +32,12 @@ class ShopView(TemplateView):
 class CartegoriesView(TemplateView):
     template_name = "shop/categories.html"
 
+class ProductDetailPageView(TemplateView):
+    def get(self , request ,pk ):
+        product = Product.objects.get(pk = pk)
+        return render(request ,"shop\ProductDetailPage.html", {"product" : product} )
+
+    
+    # template_name = "shop/ProductDetailPage.html"
+
+
