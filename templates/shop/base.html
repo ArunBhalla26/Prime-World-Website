@@ -66,17 +66,46 @@
                 Testimonial
               </a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact'%}">
                 Contact Us
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'categories'%}">
+            
+            <style>
+              .dropdown:hover>.dropdown-menu {
+                display: block;
+              }
+              
+              .dropdown>.dropdown-toggle:active {
+                /*Without this, clicking will make it sticky*/
+                  pointer-events: none;
+              }
+            </style>
+      
+            <a href = "{% url 'categories'%}">
+            <div class="dropdown nav-item ">
+              <button class="btn nav-item nav-link dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+                
+              >
                 Categories
-              </a>
-            </li>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="nav-link " href="#">Action</a></li>
+                <li><a class="nav-link" href="#">Another action</a></li>
+                <li><a class="nav-link" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            <a>
+          
           </ul>
+
+
           <div class="user_option">
             <a href="">
               <i class="fa fa-user" aria-hidden="true"></i>
