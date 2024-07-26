@@ -13,10 +13,10 @@ class AboutView(TemplateView):
     template_name = "shop/why.html"
 
 class ContactView(TemplateView):
-    template_name = "shop/conatct.html"
+    template_name = "shop/contact.html"
 
 class TestimonialView(TemplateView):
-    template_name = "shop/testtimonial.html"
+    template_name = "shop/testimonial.html"
     
 class ShopView(TemplateView):
     template_name = "shop/shop.html"
