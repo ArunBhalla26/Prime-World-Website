@@ -1,0 +1,140 @@
+{% extends "shop/base.html" %} {% load static %} {% block a %}
+
+<section class="Categories_section" style="padding: 1rem">
+  <div class="heading_container">
+    <data>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>sidebar categories</title>
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+      />
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+      ></script>
+      <link rel="stylesheet" href="{% static 'css/sidebar_list.css' %}" />
+    </data>
+
+    <div class="container-fluid">
+      <div class="sidebar-content">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+          <p style="padding-left: 2rem; font-size: 40px">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+            Filter
+          </p>
+          {% for name in category_names %}
+          <a
+            href="{% url 'cpage' name %}"
+            class="d-block mb-2"
+            style="padding-left: 2rem"
+          >
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            {{ name }}
+          </a>
+          {% endfor %}
+        </aside>
+
+        <!-- Right side content -->
+        <div id="additional-content">
+          <div style="padding-left: 3rem">
+            <section class="shop_section layout_padding">
+              <div class="container">
+                <div class="heading_container heading_center">
+                  <h2 style="font-size: 50px;">{{category_name_data}}</h2>
+                </div>
+              
+                {% if not products and request.path == '/cpage/' %}
+                  <h1> shop is ready
+                  </h1>
+
+                  <section class="shop_section layout_padding">
+                    <div class="container">
+                      <div class="heading_container heading_center">
+                        <h2>
+                           Our Products
+                        </h2>
+                      </div>
+                
+                      {% comment %} products fetching{% endcomment %}
+                      
+                      <div class="row layout_padding">
+                        {% for p in products %}
+                        <div class="col-sm-6 col-md-4 col-lg-3 ">
+                          <div class="box">
+                            <a href="{% url 'ppage' p.id %}">
+                              <div class="img-box">
+                                <img src="{{p.product_image.url}}" alt="" />
+                              </div>
+                              <div class="detail-box">
+                                <h6>{{p.title}}</h6>
+                                <h6>
+                                  {% comment %} Price {% endcomment %}
+                                  <span> ₹{{p.list_price}} </span>
+                                </h6>
+                              </div>
+                              <div class="new">
+                                <span> New </span>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                  <!-- end shop section -->
+
+
+                {% elif  not products and request.path == '/cpage/<slugify>'%}
+
+                  <div>
+                    <h2 style="font-size: 45px;">! Soory :)</h2>
+                    <h3 style="text-indent: 5em">
+                      Soory, No Products Are Available In this Collection .
+                    </h3>
+                      <br>
+                      <h3 style="text-indent: 5em">
+                      Comming Soon :)
+                      </h3>
+                  </div>
+      
+                {% endif %}
+
+
+                <div class="row ">
+                  {% for p in category_products %}
+                  <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="box">
+                      <a href="{% url 'ppage' p.id %}">
+                        <div class="img-box">
+                          <img src="{{p.product_image.url}}" alt="" />
+                        </div>
+                        <div class="detail-box">
+                          <h6>{{p.title}}</h6>
+                          <h6>
+                            {% comment %} Price {% endcomment %}
+                            <span> ₹{{p.list_price}} </span>
+                          </h6>
+                        </div>
+                        <div class="new">
+                          <span> New </span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                
+              </div>
+            </section>
+
+            <div class="row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock a %}

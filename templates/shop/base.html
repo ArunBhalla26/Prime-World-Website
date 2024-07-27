@@ -50,31 +50,44 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  ">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home'%}">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item {% if request.path == '/' %}active{% endif %} " >
+              <a class="nav-link" href="{% url 'home'%}">Home 
+                <span class="sr-only">(current)</span>
+              </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item  {% if request.path == '/shop/' %}active{% endif %}" >
               <a class="nav-link" href="{% url 'shop'%}">
                 Shop
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if request.path == '/about/' %}active{% endif %} ">
               <a class="nav-link" href="{% url 'about'%}">
                 About Us
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if request.path == '/testimonial/' %}active{% endif %} " >
               <a class="nav-link" href="{% url 'testimonial'%}">
                 Testimonial
               </a>
             </li>
             
-            <li class="nav-item">
+            <li class="nav-item  {% if request.path == '/contact/' %}active{% endif %} ">
               <a class="nav-link" href="{% url 'contact'%}">
                 Contact Us
               </a>
             </li>
+
+            <li class="nav-item  {% if request.path == '/cpage/' %}active{% endif %} ">
+              <a class="nav-link" href="{% url 'cpage'%}">
+                Categories
+              </a>
+            </li>
             
+            
+      {% comment %} 
+      # -----------Adding a Mega Menue but Failed------Future Update
+      
+      {% for name in category_names %}
             <style>
               .dropdown:hover>.dropdown-menu {
                 display: block;
@@ -86,7 +99,7 @@
               }
             </style>
       
-            <a href = "{% url 'categories'%}">
+            <a href = "{% url 'cpage'%}">
             <div class="dropdown nav-item ">
               <button class="btn nav-item nav-link dropdown-toggle"
                 type="button"
@@ -97,14 +110,32 @@
               >
                 Categories
               </button>
+
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="nav-link " href="#">Action</a></li>
-                <li><a class="nav-link" href="#">Another action</a></li>
-                <li><a class="nav-link" href="#">Something else here</a></li>
+               <li><a class="nav-link " href="{{}}">{{}}</a></li> 
+                <li><a class="nav-link" href="#">{{name}}</a></li>
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+                <li><a class="nav-link" href="#">Something else here</a></li> 
+
               </ul>
-            </div>
+              {% endfor %}  {% endcomment %}
+            {% comment %} </div>
             <a>
-          
+              
+           {% endcomment %}
           </ul>
 
 
@@ -164,8 +195,8 @@
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
             </p>
+            <div class="col-md-6 col-lg-3">
           </div>
-          <div class="col-md-6 col-lg-3">
             <div class="info_form ">
               <h5>
                 Newsletter

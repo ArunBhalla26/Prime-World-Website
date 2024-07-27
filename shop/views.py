@@ -5,7 +5,6 @@ from .models  import *
 
 # Create your views here.
 
-
 class HomeView(TemplateView):
     def get (self , request):
         clothing = Product.objects.filter(category = 'Clothing')
@@ -26,13 +25,44 @@ class ContactView(TemplateView):
 class TestimonialView(TemplateView):
     template_name = "shop/testimonial.html"
     
+def AllProducts(request):
+    products  = Product.objects.all()
+    return render(request ,"shop/shop.html" , {'products'  : products} )
+
 class ShopView(TemplateView):
-    template_name = "shop/shop.html"
+    def get(self , request):
+        return AllProducts(request )
 
-class CartegoriesView(TemplateView):
-    # def get 
 
-    template_name = "shop/categories.html"
+# class CartegoriesView(TemplateView):
+
+# ------ same concept used in "category_filter" -------------
+
+#     def get (self , request):
+#         category_names = []
+#         for category  in CATEGORY_CHOICES:
+#             category_names.append(category[0])
+#         print(category_names)
+#         return render(request , "shop\sidebar_category.html" , {'category_names' : category_names} )
+
+
+
+def Category_Filter(request , category_name_data = None):
+    # for filter section 
+    category_names = []
+    for category  in CATEGORY_CHOICES:
+        data = category[0].split()[0].replace(',' , '')
+        category_names.append(data)
+
+    # for displaying the collections
+    if ( category_name_data == None or category_name_data not in category_names):
+
+        return render(request , "shop/categoryPage.html" , {'category_names' : category_names})
+    
+    category_products  = Product.objects.filter(category = category_name_data)
+    
+    print(category_names)
+    return render(request , "shop/categoryPage.html" , {'products' : AllProducts(request) , 'category_name_data' : category_name_data ,'category_names' : category_names , 'category_products' : category_products} ) 
 
 class ProductDetailPageView(TemplateView):
     def get(self , request ,pk ):

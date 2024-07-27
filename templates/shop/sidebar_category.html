@@ -1,0 +1,61 @@
+{% extends "shop/base.html" %} {% load static %} {% block a %}
+
+<section class="Categories_section" style="padding: 1rem">
+  <div class="heading_container">
+    <data>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>sidebar categories</title>
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+      />
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+      ></script>
+      <link rel="stylesheet" href="{% static 'css/sidebar_list.css' %}" />
+    </data>
+
+    <!-- custom button to deisplay till 1 to  999 px  -->
+    {% comment %} <input type="checkbox" id="toggle-checkbox" class="d-none" />
+    <label for="toggle-checkbox" id="toggle-button" class="d-lg-none">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+      Filter
+    </label> {% endcomment %}
+
+    <!-- button end -->
+
+    <!-- sidebar start -->
+    <div class="container-fluid">
+        <div class="sidebar-content">
+          <!-- Sidebar -->
+          <aside id="sidebar">
+            <p style="padding-left: 2rem; font-size: 40px;">
+              <i class="fa fa-filter" aria-hidden="true"></i>
+              Filter
+            </p>
+            {% for name in category_names %}
+            <a href="#" class="d-block mb-2" style="padding-left: 2rem;">
+              <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+              {{ name }}
+            </a>
+            {% endfor %}
+          </aside>
+    
+          <!-- Right side content -->
+          <div id="additional-content">
+            <div style="padding-left: 3rem;">
+              <h2>Additional Content</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+                sit amet accumsan arcu. Vivamus a ante non eros bibendum cursus.
+              </p>
+              <!-- Add more content here as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+</section>
+ {% endblock a %}

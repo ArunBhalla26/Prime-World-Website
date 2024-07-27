@@ -8,7 +8,7 @@ aside {
 }
 
 aside a {
-  font: 16px Roboto;
+  font: 18px Roboto;
   color: #514f4f;
   display: block;
   padding: 12px;
@@ -67,51 +67,47 @@ body {
   margin: 0;
 }
 
-.social {
-  height: 0;  
-}
-
-.social i:before {
-  width: 14px;
-  height: 14px;
-  font-size: 14px;
-  position: fixed;
-  color: #fff;
-  background: #0077B5;
-  padding: 10px;
-  border-radius: 50%;
-  top:5px;
-  right:5px;
-}
 
 
+.container-fluid {
+      display: flex;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
 
+    .sidebar-content {
+      display: flex;
+      width: 100%;
+      flex: 1;
+    }
 
-@media (max-width: 999px) {
-  #sidebar {
-    display: none;
-  }
-  #toggle-button {
-    display: block;
-  }
-  #toggle-checkbox:checked ~ #sidebar {
-    display: block;
-  }
-}
-/* Initially hide the toggle button on larger screens */
-@media (min-width: 1000px) {
-  #toggle-button {
-    display: none;
-  }
-}
-/* Custom styling for the toggle button */
-#toggle-button {
-  cursor: pointer;
-  padding: 0.5rem;
-  background-color: #f9ece6;
-  color: #514f4f;
-  border: none;
-  text-align: center;
-  width: 20%;
-}
+    #sidebar {
+      color: #514f4f;
+      width: 23rem; /* Fixed width for sidebar */
+      background: #f9ece6;
+      border-right: 1px solid #dee2e6; /* Border for separation */
+       /* Padding inside sidebar */
+      overflow-y: auto; /* Scroll if content is too tall */
+    }
 
+    #additional-content {
+      flex: 1; /* Take up the remaining space */
+      padding: 1rem; /* Padding for additional content */
+    }
+
+    /* Responsive styling */
+    @media (max-width: 999px) {
+      .sidebar-content {
+        flex-direction: column;
+      }
+
+      #sidebar {
+        width: 100%; /* Full width on small screens */
+        border-right: none; /* Remove border on small screens */
+      }
+
+      #additional-content {
+        width: 100%; /* Full width on small screens */
+      }
+    }
