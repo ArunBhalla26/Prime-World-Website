@@ -26,12 +26,14 @@ class TestimonialView(TemplateView):
     template_name = "shop/testimonial.html"
     
 def AllProducts(request):
-    products  = Product.objects.all()
-    return render(request ,"shop/shop.html" , {'products'  : products} )
+
+    return Product.objects.all()
+    
 
 class ShopView(TemplateView):
     def get(self , request):
-        return AllProducts(request )
+        
+        return render(request ,"shop/shop.html" , {'products'  : AllProducts(request) } )
 
 
 # class CartegoriesView(TemplateView):
@@ -49,6 +51,7 @@ class ShopView(TemplateView):
 
 def Category_Filter(request , category_name_data = None):
     # for filter section 
+    products = Product.objects.all()
     category_names = []
     for category  in CATEGORY_CHOICES:
         data = category[0].split()[0].replace(',' , '')
@@ -61,8 +64,13 @@ def Category_Filter(request , category_name_data = None):
     
     category_products  = Product.objects.filter(category = category_name_data)
     
-    print(category_names)
-    return render(request , "shop/categoryPage.html" , {'products' : AllProducts(request) , 'category_name_data' : category_name_data ,'category_names' : category_names , 'category_products' : category_products} ) 
+    context = {
+        'products' : products , 
+        'category_name_data' : category_name_data ,
+        'category_names' : category_names , 'category_products' : category_products
+        }
+
+    return render(request , "shop/categoryPage.html" , context ) 
 
 class ProductDetailPageView(TemplateView):
     def get(self , request ,pk ):
