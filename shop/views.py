@@ -83,26 +83,19 @@ class CustomerRegistrationFormView(TemplateView):
             form.save()
         
         return render(request , "shop/CustomerRegistrationForm.html", {"form" : form} )
-
-
-# class LoginFormView(TemplateView):
-#     def get(self , request):
-#         form = LoginForm()
-#         return render(request , "shop/LoginForm.html", {"form" : form} )
     
-#     def post(self , request):
-#         form = AuthenticationForm(request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             messages.success(request, "You have been logged in successfully.")
-#             return redirect('home')
+class ProfileFormView(TemplateView):
+    def get(self ,request):
+        form = ProfileForm()
+        return render(request , "shop/ProfileForm.html", {"form" : form} )
+    
+    def post(self , request):
+        user = request.User
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            messages.success(request , " Congratulations :) Registered SucessFully !")
+            form.save()
         
-#         else:
-#             messages.error(request, "Invalid username or password.")
+        return render(request , "shop/ProfileForm.html", {"form" : form} )
         
-#         form = AuthenticationForm()
-
-#         return render(request , "shop/LoginForm.html", {"form" : form} )
-
-
+        

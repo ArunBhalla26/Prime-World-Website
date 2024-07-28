@@ -35,15 +35,13 @@
           </a>
 
 
-
-
-
           {% for name in category_names %}
           
           <a
             href="{% url 'cpage' name %}"
             class="d-block mb-2"
             style="padding-left: 2rem"
+            
           >
             <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
             {{ name }}

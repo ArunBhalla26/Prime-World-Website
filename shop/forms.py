@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm , AuthenticationForm , UsernameField
 from django.contrib.auth.models import User
 from django.utils.translation import gettext ,  gettext_lazy as _
+from.models import Customer
 
 
 
@@ -41,3 +42,14 @@ class LoginForm(AuthenticationForm):
     
     upass_att = {'autocomplete' : 'current-password', 'class': 'form-control ' }
     password = forms.CharField(label=_("Password"), strip=False, widget = forms.PasswordInput(attrs= upass_att))
+
+class ProfileForm (forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = ['name', 'locality', 'city', 'state', 'zipcode' ]
+        widgets = { "name":  forms.TextInput(attrs=widget_attrs),
+                   "locality" : forms.TextInput(attrs=widget_attrs), 
+                   "city" : forms.TextInput(attrs=widget_attrs), 
+                   "state" : forms.Select(attrs=widget_attrs), 
+                   "zipcode" : forms.NumberInput(attrs=widget_attrs), 
+                   }

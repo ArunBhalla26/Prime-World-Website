@@ -17,6 +17,7 @@ urlpatterns = [
     path("cpage/<slug:category_name_data>", Category_Filter, name="cpage"),
 
     path("registration/", CustomerRegistrationFormView.as_view(), name="registration"),
+    path("proform/", ProfileFormView.as_view(), name="proform"),
   
     path("accounts/login/", auth_view.LoginView.as_view(template_name  = "shop/LoginForm.html" ,authentication_form  = LoginForm ), name="login"),
 
