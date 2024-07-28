@@ -15,6 +15,7 @@ urlpatterns = [
     path("ppage/<int:pk>", ProductDetailPageView.as_view(), name="ppage"),
     path("side/", SidebarPageView.as_view(), name="side") ,
    path("cpage/<slug:category_name_data>", Category_Filter, name="cpage"),
+   path("registration/", CustomerRegistrationFormView.as_view(), name="registration"),
     
    
 ]

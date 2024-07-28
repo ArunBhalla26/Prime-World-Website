@@ -8,7 +8,7 @@ aside {
 }
 
 aside a {
-  font: 18px Roboto;
+  font: 18px poppins;
   color: #514f4f;
   display: block;
   padding: 12px;
@@ -61,7 +61,7 @@ aside p {
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: poppins ;
   width: 100%;
   height: 100vh;
   margin: 0;

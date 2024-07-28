@@ -25,7 +25,21 @@
             <i class="fa fa-filter" aria-hidden="true"></i>
             Filter
           </p>
+          <a
+            href="{% url "shop" %}"
+            class="d-block mb-2"
+            style="padding-left: 2rem"
+          >
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            All Products
+          </a>
+
+
+
+
+
           {% for name in category_names %}
+          
           <a
             href="{% url 'cpage' name %}"
             class="d-block mb-2"
