@@ -1,3 +1,60 @@
-{% for p  in products %}
-<h1>{{p.title}}</h1>
-{% endfor %}
+
+{% extends "shop/base.html" %}
+
+{% load static %}
+
+{% block a %}
+  <!-- end hero area -->
+
+  <!-- why section -->
+
+  <section class="why_section ">
+      <div class="heading_container ">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css" rel="stylesheet">
+
+    <h2 class = " heading_container heading_center" style="padding-top: 30px;">
+        Register Yourself Now !
+    </h2>
+
+    <div style = "padding : 0%; font-family : poppins;" class = " shadow P-5">
+
+    <div class="container mt-5">
+        <form>
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4" >
+                <input type="email" id="form2Example1" class="form-control"  />
+                <label class="form-label" for="form2Example1">Email address : Click Here</label>
+            </div>
+        
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2 ">Password: Click Here</label>
+            </div>
+        
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4 ">
+                     
+                <div class="col text-center">
+                    <!-- Simple link -->
+                    <a href="#!">Forgot password?</a>
+                </div>
+            </div>
+        
+            <!-- Submit button -->
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
+        
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Not a member? <a href="#!">Register</a></p>
+                 
+            </div>
+        </form>
+    </div>
+        <br>
+    <!-- MDB JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.js"></script>
+</div>
+<br>
+</section>
+{% endblock a %}

@@ -1,9 +1,9 @@
-
 from django.urls import path 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_view
 from .views import *
-
+from .forms import LoginForm
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
@@ -14,9 +14,14 @@ urlpatterns = [
     path("cpage/",Category_Filter, name="cpage"),
     path("ppage/<int:pk>", ProductDetailPageView.as_view(), name="ppage"),
     path("side/", SidebarPageView.as_view(), name="side") ,
-   path("cpage/<slug:category_name_data>", Category_Filter, name="cpage"),
-   path("registration/", CustomerRegistrationFormView.as_view(), name="registration"),
-    
+    path("cpage/<slug:category_name_data>", Category_Filter, name="cpage"),
+
+    path("registration/", CustomerRegistrationFormView.as_view(), name="registration"),
+  
+    path("accounts/login/", auth_view.LoginView.as_view(template_name  = "shop/LoginForm.html" ,authentication_form  = LoginForm ), name="login"),
+
+    path("x/", xView.as_view(), name="x"),
+    # path("accounts/login/", LoginFormView.as_view(), name="login_form"),
    
 ]
 

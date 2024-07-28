@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
+from django.contrib.auth import authenticate , login
+from django.contrib.auth.forms import AuthenticationForm
+
 from .models  import *
 from .forms import *
 
 # Create your views here.
+class xView(TemplateView):
+    template_name = "shop/x.html"
+
 
 class HomeView(TemplateView):
     def get (self , request):
@@ -77,5 +83,26 @@ class CustomerRegistrationFormView(TemplateView):
             form.save()
         
         return render(request , "shop/CustomerRegistrationForm.html", {"form" : form} )
+
+
+# class LoginFormView(TemplateView):
+#     def get(self , request):
+#         form = LoginForm()
+#         return render(request , "shop/LoginForm.html", {"form" : form} )
+    
+#     def post(self , request):
+#         form = AuthenticationForm(request.POST)
+#         if form.is_valid():
+#             user = form.get_user()
+#             login(request, user)
+#             messages.success(request, "You have been logged in successfully.")
+#             return redirect('home')
+        
+#         else:
+#             messages.error(request, "Invalid username or password.")
+        
+#         form = AuthenticationForm()
+
+#         return render(request , "shop/LoginForm.html", {"form" : form} )
 
 
