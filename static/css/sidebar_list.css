@@ -96,6 +96,14 @@ body {
       padding: 1rem; /* Padding for additional content */
     }
 
+
+    /* @media (max-width: 999px) {
+      .sidebar_mobile {
+        width: 250px; 
+        height: 100vh;
+        overflow-y: auto; 
+         }} */
+
     /* Responsive styling */
     @media (max-width: 999px) {
       .sidebar-content {
@@ -103,6 +111,8 @@ body {
       }
 
       #sidebar {
+        
+        height: 10vh;
         width: 100%; /* Full width on small screens */
         border-right: none; /* Remove border on small screens */
       }

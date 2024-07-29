@@ -3,6 +3,9 @@
 <section class="Categories_section" style="padding: 1rem">
   <div class="heading_container">
     <data>
+      <style>
+        
+      </style>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>sidebar categories</title>
@@ -20,33 +23,34 @@
     <div class="container-fluid">
       <div class="sidebar-content">
         <!-- Sidebar -->
-        <aside id="sidebar">
+        <aside id="sidebar" class  = "sidebar" >
           <p style="padding-left: 2rem; font-size: 40px">
             <i class="fa fa-filter" aria-hidden="true"></i>
             Filter
           </p>
           <a
             href="{% url "shop" %}"
-            class="d-block mb-2"
+            class="d-block mb-2 "
             style="padding-left: 2rem"
           >
             <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
             All Products
           </a>
-
-
-          {% for name in category_names %}
           
-          <a
+            
+            {% for name in category_names %}
+            
+            <a
             href="{% url 'cpage' name %}"
-            class="d-block mb-2"
+            class="d-block mb-2 "
             style="padding-left: 2rem"
             
-          >
+            >
             <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
             {{ name }}
           </a>
           {% endfor %}
+
         </aside>
 
         <!-- Right side content -->
