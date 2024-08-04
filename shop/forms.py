@@ -8,8 +8,7 @@ from.models import Customer
 
 widget_attrs = {'class': 'form-control '}
 class CustomerRegistrationForm(UserCreationForm):
-    # Define common widget attributes
-    
+
     # The 'password1' and 'password2' fields are part of UserCreationForm
     password1 = forms.CharField(
         label='Password',
@@ -43,6 +42,7 @@ class LoginForm(AuthenticationForm):
     upass_att = {'autocomplete' : 'current-password', 'class': 'form-control ' }
     password = forms.CharField(label=_("Password"), strip=False, widget = forms.PasswordInput(attrs= upass_att))
 
+
 class ProfileForm (forms.ModelForm):
     class Meta:
         model = Customer
@@ -53,3 +53,10 @@ class ProfileForm (forms.ModelForm):
                    "state" : forms.Select(attrs=widget_attrs), 
                    "zipcode" : forms.NumberInput(attrs=widget_attrs), 
                    }
+        labels = {
+            "name": "Full Name",
+            "locality": "Locality",
+            "city": "City",
+            "state": "State",
+            "zipcode": "Zip Code",
+        }

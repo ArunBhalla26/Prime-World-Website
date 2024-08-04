@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
-from django.contrib.auth import authenticate , login
+from django.contrib.auth import  logout
 from django.contrib.auth.forms import AuthenticationForm
 
 from .models  import *
@@ -84,18 +84,29 @@ class CustomerRegistrationFormView(TemplateView):
         
         return render(request , "shop/CustomerRegistrationForm.html", {"form" : form} )
     
-class ProfileFormView(TemplateView):
+class ProfileFormPageView(TemplateView):
     def get(self ,request):
         form = ProfileForm()
-        return render(request , "shop/ProfileForm.html", {"form" : form} )
+        return render(request , "shop/ProfilePage.html", {"form" : form} )
     
     def post(self , request):
-        user = request.User
-        form = ProfileForm(request.POST)
+        user = request.user
+        form = ProfileForm(request.POST )
         if form.is_valid():
-            messages.success(request , " Congratulations :) Registered SucessFully !")
-            form.save()
+            print(form.errors)
+            profile = form.save(commit=False)
+            profile.user = request.user 
+            profile.save()
+            messages.success(request , " Congratulations :) Profile Added SucessFully !")
         
-        return render(request , "shop/ProfileForm.html", {"form" : form} )
-        
-        
+        return render(request , "shop/ProfilePage.html", {"form" : form} )
+
+def LogoutView(request):
+    logout(request)
+    messages.success(request , " Sucessfully Loged-Out ! ")
+    return redirect('login')
+class AddressView(TemplateView):
+    
+    template_name = "shop/Address.html"
+
+    

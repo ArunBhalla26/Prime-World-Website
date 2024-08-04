@@ -13,8 +13,9 @@
         <h2 class = " heading_container heading_center">
             Register Yourself Now !
         </h2>
+        <br>
 
-        <div style = "padding : 30px 500px 30px; font-family : poppins;" class = " shadow P-5">
+        <div style = " font-family : poppins;" class = " container shadow P-5">
         <form action="" method="post" >
 
             {% csrf_token %}
@@ -26,19 +27,13 @@
                     </p>
                 {% endfor %}
                 {% endif %}
-            {% for fm in form %}
-                <div class = "form-groupmb-3 ">
-                {{fm.label_tag}} {{fm}} 
-                <!-- <small class="text-danger">{{fm.
-                errors | striptags}}</small> -->
-                </div>
-            {% endfor %}
-                <br>
-            <input type= "submit" value= "Submit" class="btn-primary" >
-            <br>
+
+                {{ form.as_p }}
+               
+              <input type= "submit" value= "Submit" class="btn btn-primary btn-block mb-4"  >
             <div class="text-center text-primary btn fw-bold">
                 <sma11>Existing User ? 
-                    <a href="#" class="text-danger">
+                    <a href="/accounts/login/" class="text-danger">
                         Login Now
                     </a>
                 </small>
