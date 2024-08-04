@@ -23,7 +23,7 @@
             {% if messages %}
                 {% for m in messages %}
                     <p {% if m.tags %} class = "alert alert-{{m.tags}} mb-5" {% endif %} >
-                {{message}}
+                {{m}}
                     </p>
                 {% endfor %}
                 {% endif %}

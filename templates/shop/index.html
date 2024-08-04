@@ -150,7 +150,7 @@
         {% endfor %}
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="{% url 'shop'%}">
           View All Products
         </a>
       </div>
@@ -201,7 +201,7 @@
         {% endfor %}
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="{% url 'cpage' 'Electronics' %}">
           View All Products
         </a>
       </div>
@@ -250,7 +250,7 @@
       {% endfor %}
     </div>
     <div class="btn-box">
-      <a href="">
+      <a href="{% url 'cpage' 'Beauty' %}">
         View All Products
       </a>
     </div>
@@ -300,7 +300,7 @@
       {% endfor %}
     </div>
     <div class="btn-box">
-      <a href="">
+      <a href="{% url 'cpage' 'Health' %}">
         View All Products
       </a>
     </div>

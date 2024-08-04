@@ -29,14 +29,14 @@
             Filter
           </p>
           <a
-            href="{% url "shop" %}"
+            href="{% url "cpage" %}"
             class="d-block mb-2 "
             style="padding-left: 2rem"
           >
             <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
             All Products
           </a>
-          
+            
             
             {% for name in category_names %}
             
@@ -57,27 +57,18 @@
         <div id="additional-content">
           <div style="padding-left: 3rem">
             <section class="shop_section ">
-              <div class="container">
-                <div class="heading_container heading_center">
-                  <h2 style="font-size: 50px;">{{category_name_data}}</h2>
-                </div>
-              
-                {% if not products and request.path == '/cpage/' %}
-                  <h1> shop is ready
-                  </h1>
-
-                  <section class="shop_section ">
+              <div class="container">                
+                {% if request.path == '/cpage/' %}
                     <div class="container">
                       <div class="heading_container heading_center">
                         <h2>
                            Our Products
+                           
                         </h2>
                       </div>
-                
-                      {% comment %} products fetching{% endcomment %}
-                      
-                      <div class="row layout_padding">
-                        {% for p in products %}
+                      <div class="row ">
+                        {% for p in AllProducts %}
+                        
                         <div class="col-sm-6 col-md-4 col-lg-3 ">
                           <div class="box">
                             <a href="{% url 'ppage' p.id %}">
@@ -99,23 +90,41 @@
                         </div>
                         {% endfor %}
                       </div>
+                      
+                    {% else %}
+                
+                      {% comment %} products fetching{% endcomment %}
+                      <div class="heading_container heading_center">
+                        <h2 >{{category_name_data}}</h2>
+                      </div>
+                      <div class="row ">
+                        {% for p in products %}
+                        
+                        <div class="col-sm-6 col-md-4 col-lg-3 ">
+                          <div class="box">
+                            <a href="{% url 'ppage' p.id %}">
+                              <div class="img-box">
+                                <img src="{{p.product_image.url}}" alt="" />
+                              </div>
+                              <div class="detail-box">
+                                <h6>{{p.title}}</h6>
+                                <h6>
+                                  {% comment %} Price {% endcomment %}
+                                  <span> ₹{{p.list_price}} </span>
+                                </h6>
+                              </div>
+                              <div class="new">
+                                <span> New </span>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+
+                      {% endif %}
                   <!-- end shop section -->
-
-
-                {% elif  not products and request.path == '/cpage/<slugify>'%}
-
-                  <div>
-                    <h2 style="font-size: 45px;">! Soory :)</h2>
-                    <h3 style="text-indent: 5em">
-                      Soory, No Products Are Available In this Collection .
-                    </h3>
-                      <br>
-                      <h3 style="text-indent: 5em">
-                      Comming Soon :)
-                      </h3>
-                  </div>
       
-                {% endif %}
 
 
                 <div class="row ">

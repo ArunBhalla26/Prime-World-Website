@@ -23,19 +23,19 @@
             {% if messages %}
                 {% for m in messages %}
                     <p {% if m.tags %} class = "alert alert-{{m.tags}} mb-5" {% endif %} >
-                {{message}}
+                {{m}}
                     </p>
                 {% endfor %}
-                {% endif %}
+            {% endif %}
 
                 {{ form.as_p }}
                
               <input type= "submit" value= "Submit" class="btn btn-primary btn-block mb-4"  >
             <div class="text-center text-primary btn fw-bold">
-                <sma11>Existing User ? 
-                    <a href="/accounts/login/" class="text-danger">
-                        Login Now
-                    </a>
+                <sma11>New User ? 
+                    <a href="/accounts/signup/" class="text-danger">
+                Sign UP   
+                 </a>
                 </small>
             </div>
             {% if form.non_field_errors %}

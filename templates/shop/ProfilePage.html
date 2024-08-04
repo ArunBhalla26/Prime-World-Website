@@ -77,7 +77,13 @@
                     {% csrf_token %}
                     {{ form.as_p }}
                     <input type= "submit" value= "Submit" class="btn btn-primary btn-block mb-4"  >
-                
+                    {% if messages %}
+                      {% for m in messages %}
+                          <p {% if m.tags %} class = "alert alert-{{m.tags}} mb-5  " {% endif %} >
+                      {{m}}
+                          </p>
+                      {% endfor %}
+            {% endif %}
                 </form>
               
                 </section>

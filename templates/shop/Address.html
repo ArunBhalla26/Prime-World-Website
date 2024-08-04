@@ -17,12 +17,19 @@
 
       <link rel="stylesheet" href="{% static 'css/sidebar_list.css' %}" />
       <style>
-        @media (min-width: 1000px) {
-              aside {
-                  min-height: 1000px;
-              }
-          }
-      </style>
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    
+    @media (min-width: 1100px) {
+        aside {
+            min-height: 1000px;
+        }
+    }
+    </style>
+      
     </data>
 
     <div class="container-fluid">
@@ -69,34 +76,35 @@
                 <section>
                   <div class="heading_container heading_center">
                     <h2 style="font-size: 50px">Your Addresses</h2>
-                  </div>
+                  </div >
 
-
-                  <div class="card" style="width: 18rem; " >
-                    <div class="card-body">
-                      
-                      <h5 class="card-title" style="font-size: 2rem;">Card title</h5>
-                      
-                      <p class="card-text" style="font-size: 1.25rem;">
-                        Name : 
-                      </p>
-                      <p class="card-text" style="font-size: 1.25rem;">
-                        Locality : 
-                      </p>
-                      <p class="card-text" style="font-size: 1.25rem;">
-                        City : 
-                      </p>
-                      <p class="card-text" style="font-size: 1.25rem;">
-                        Zip-Code : 
-                      </p>
-                      <p class="card-text" style="font-size: 1.25rem;">
-                        State : 
-                      </p>
-                      <!-- <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a> -->
+                  <div class =" card-container">
+                    {% for a in address_qs %}
+                    <div class="card" style="width: 18rem; margin: 20px; ">
+                        <div class="card-body " >
+                            <h5 class="card-title" style="font-size: 2rem;"> Address : {{forloop.counter }}</h5>
+                            <p class="card-text" style="font-size: 1.25rem;">
+                                Name : {{a.name}}
+                            </p>
+                            <p class="card-text" style="font-size: 1.25rem;">
+                                Locality : {{a.locality}}
+                            </p>
+                            <p class="card-text" style="font-size: 1.25rem;">
+                                City : {{a.city}}
+                            </p>
+                            <p class="card-text" style="font-size: 1.25rem;">
+                                Zip-Code : {{a.zipcode}}
+                            </p>
+                            <p class="card-text" style="font-size: 1.25rem;">
+                                State : {{a.state}}
+                            </p>
+                        </div>
                     </div>
-                  </div>
+                    {% endfor %}
 
+                </div>
+                <br>
+                  <a href="{% url 'profile' %}"> <span style="font-size: 1.5rem " >Want to Add More Address ! </span></a>
                 </section>
         </div>
       </div>

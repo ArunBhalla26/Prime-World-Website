@@ -13,16 +13,16 @@ urlpatterns = [
     path("testimonial/", TestimonialView.as_view(), name="testimonial"),
     path("cpage/",Category_Filter, name="cpage"),
     path("ppage/<int:pk>", ProductDetailPageView.as_view(), name="ppage"),
-    path("side/", SidebarPageView.as_view(), name="side") ,
+    # path("side/", SidebarPageView.as_view(), name="side") ,
     path("cpage/<slug:category_name_data>", Category_Filter, name="cpage"),
-    path("registration/", CustomerRegistrationFormView.as_view(), name="registration"),
-    path("proform/", ProfileFormPageView.as_view(), name="proform"),
+    path("accounts/signup/", CustomerRegistrationFormView.as_view(), name="signup"),
     path("accounts/login/", auth_view.LoginView.as_view(template_name  = "shop/LoginForm.html" ,authentication_form  = LoginForm ), name="login"),
     path("logout/", LogoutView, name="logout"),
+    path("profile/", ProfileFormPageView.as_view(), name="profile"),
     path("address/", AddressView.as_view(), name="address"),
+    
     path("x/", xView.as_view(), name="x"),
     
-    path("profile/", ProfileFormPageView.as_view(), name="profile"),
  
     
     
