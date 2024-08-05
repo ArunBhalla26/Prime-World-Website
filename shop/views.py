@@ -19,15 +19,6 @@ class HomeView(TemplateView):
         jewelry = Product.objects.filter(category = 'Jewelry')
         
         return render(request , "shop/index.html" , {'clothing' : clothing[:4] ,'electronics' : electronics[:4] , 'beauty': beauty[:4] ,'jewelry': jewelry[:4] , 'grocery': grocery[:4] })  
-# class ProductFilterHomePageView(TemplateView):
-    
-#     def get(self , request, category =None):
-#         if category == None :
-#             return render(request ,"shop/shop.html" , {'products'  : AllProducts(request) } )
-        
-#         products = Product.objects.filter(category = category)
-#         return render(request ,"shop/cpage.html" , {'products'  : products  , 'category' : category} )
-    
 
 class AboutView(TemplateView):
     template_name = "shop/why.html"
@@ -122,6 +113,38 @@ class AddressView(TemplateView):
         address_qs = Customer.objects.filter(user = user)
         return render (request , "shop/Address.html" , {'address_qs': address_qs})
 
+class AddToCartPageView(TemplateView):
+    
+    def get(self , request):
+        user = request.user
+        product_id = request.GET.get('prod_id')
+        product = Product.objects.get(id = product_id)
+        Cart(user = user , product = product).save()
+        return redirect('/cart/')
+    
+class ShowCartPageView(TemplateView):
+    def get(self , request):
+        if request.user.is_authenticated :
+            user =request.user
+            carts = Cart.objects.filter(user = user)
+            if carts :
+                amount  = 0.0
+                shipping_amount = 70.0
+                total_amount  = 0.0
+                total_number_of_items = len(carts)
+                
+                for cart in carts:
+                    amount += cart.product.list_price * cart.quantity
+                
+                total_amount += amount + shipping_amount 
+                context = {'carts':carts,
+                            'total_amount' : total_amount ,
+                            'shipping_amount' : shipping_amount,
+                            'total_number_of_items' : total_number_of_items,
+                            }
+                return render(request ,"shop/CartPage.html" , context = context )
+            else:
+                return render(request ,"shop/CartException.html")
     
 class xView(TemplateView):
     template_name = "shop/x.html"

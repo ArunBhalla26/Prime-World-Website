@@ -21,6 +21,8 @@ urlpatterns = [
     path("profile/", ProfileFormPageView.as_view(), name="profile"),
     path("address/", AddressView.as_view(), name="address"),
     
+    path("add-to-cart/", AddToCartPageView.as_view(), name="add-to-cart"),
+    path("cart/", ShowCartPageView.as_view(), name="showcart"),
     path("x/", xView.as_view(), name="x"),
     
  
