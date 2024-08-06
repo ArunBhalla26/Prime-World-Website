@@ -75,7 +75,8 @@
                     <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                       <!-- Quantity -->
                      <span for = "form1" style=" display: flex; justify-content: center;"> Quantity </span>
-                      <div class="d-flex mb-4" style="max-width: 300px">
+                      
+                     <div class="d-flex mb-4" style="max-width: 300px">
                         <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 me-2"
                           onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                           <i class="fa fa-minus" aria-hidden="true"></i>
@@ -85,7 +86,7 @@
                           <input id="form1" min="0" name="quantity" value="{{cart.quantity}}" type="number" class="form-control" />
                           <!-- <label class="form-label" for="form1">Quantity</label> -->
                         </div>
-      
+                          
                         <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 ms-2"
                           onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                           <i class="fa fa-plus" aria-hidden="true"></i>

@@ -144,7 +144,7 @@ class ShowCartPageView(TemplateView):
                             }
                 return render(request ,"shop/CartPage.html" , context = context )
             else:
-                return render(request ,"shop/CartException.html")
+                return render(request ,"shop/EmptyCart.html")
     
 class xView(TemplateView):
     template_name = "shop/x.html"
