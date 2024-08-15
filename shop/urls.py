@@ -18,6 +18,12 @@ urlpatterns = [
     path("accounts/signup/", CustomerRegistrationFormView.as_view(), name="signup"),
     path("accounts/login/", auth_view.LoginView.as_view(template_name  = "shop/LoginForm.html" ,authentication_form  = LoginForm ), name="login"),
     path("logout/", LogoutView, name="logout"),
+    
+    path("accounts/pwdchange/", MyPasswordChangeView.as_view(), name="pwdchange"),
+    #path("accounts/pwdchange/", auth_view.PasswordChangeView.as_view(template_name  = "shop/PasswordChangeForm.html" ,form_class  = MyPasswordChangeForm , success_url = '/pwdchangedone/'), name="pwdchange"),
+    path("pwdchangedone/",auth_view.PasswordChangeDoneView.as_view(template_name  = "shop/index.html" ,), name="pwdchangedone"),
+    # path("pwdchnagedone/", PasswordChangeDoneView.as_view(), name="pwdchangedone"),
+
     path("profile/", ProfileFormPageView.as_view(), name="profile"),
     path("address/", AddressView.as_view(), name="address"),
     

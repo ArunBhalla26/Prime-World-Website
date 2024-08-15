@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib import messages
 from django.contrib.auth import  logout
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth import views as auth_view 
 from .models  import *
 from .forms import *
 
@@ -69,10 +69,6 @@ class ProductDetailPageView(TemplateView):
         return render(request ,"shop\ProductDetailPage.html", {"product" : product} )
 
 
-# class SidebarPageView(TemplateView):
-#     template_name = "shop/sidebar_list.html"
-
-
 class CustomerRegistrationFormView(TemplateView):
     def get(self , request):
         form = CustomerRegistrationForm()
@@ -107,6 +103,13 @@ def LogoutView(request):
     logout(request)
     messages.success(request , " Sucessfully Loged-Out ! ")
     return redirect('login')
+
+# class PasswordChangeDoneView(TemplateView):
+#     def get(self , request):
+#         logout(request)
+#         return redirect('accounts/login')
+    
+
 class AddressView(TemplateView):
     def get(self ,request):
         user  = request.user
@@ -148,3 +151,15 @@ class ShowCartPageView(TemplateView):
     
 class xView(TemplateView):
     template_name = "shop/x.html"
+
+class MyPasswordChangeView(auth_view.PasswordChangeView):
+    template_name = "shop/PasswordChangeForm.html"
+    form_class = MyPasswordChangeForm
+    success_url = '/pwdchangedone/'
+
+    def form_valid(self, form):
+        user = form.save()
+        # update_session_auth_hash(self.request, user)
+        logout(self.request)  # Call your specific function here
+        messages.success(self.request, 'Your password was successfully updated!')
+        return super().form_valid(form)

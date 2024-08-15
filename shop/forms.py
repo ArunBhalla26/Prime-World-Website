@@ -1,7 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm , AuthenticationForm , UsernameField
+from django.contrib.auth.forms import UserCreationForm , AuthenticationForm , UsernameField ,PasswordChangeForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext ,  gettext_lazy as _
+from django.contrib.auth import password_validation
 from.models import Customer
 
 
@@ -60,3 +61,10 @@ class ProfileForm (forms.ModelForm):
             "state": "State",
             "zipcode": "Zip Code",
         }
+
+class MyPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(label = "Old Password", widget = forms.PasswordInput(attrs=widget_attrs))
+    new_password1 = forms.CharField(label="New Password" , widget = forms.PasswordInput(attrs=widget_attrs), help_text=password_validation.password_validators_help_text_html())
+    new_password2 = forms.CharField(label="Confirm Password" , widget = forms.PasswordInput(attrs=widget_attrs))
+    
+
