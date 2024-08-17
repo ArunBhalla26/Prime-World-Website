@@ -1,19 +1,12 @@
-{% extends "shop/base.html" %}
+{% extends "shop/base.html" %} {% load static %} {% block a %}
+ 
 
-{% load static %}
-
-{% block a %}
-  <!-- end hero area -->
-
-  <!-- shop section -->
-
-
-  <section class="shop_section layout_padding">
+<section class="shop_section layout_padding">
     <div class="container">
 
       <div class="heading_container heading_center">
         <h2>
-           Our Products
+           Search Result For  : <span>{{search_querry}}</span>
         </h2>
       </div>
 
@@ -42,5 +35,4 @@
         </div>
         {% endfor %}
       </div>
-  <!-- end shop section -->
-  {% endblock a %}
+{% endblock a %}

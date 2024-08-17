@@ -63,7 +63,8 @@
             </li>
             <li class="nav-item  {% if request.path == '/shop/' %}active{% endif %}" >
               <a class="nav-link" href="{% url 'shop'%}">
-                Shop
+                {% comment %} Shop {% endcomment %}
+                 All Products
               </a>
             </li>
             <li class="nav-item {% if request.path == '/about/' %}active{% endif %} ">
@@ -84,7 +85,7 @@
             </li> 
             
             <li class="nav-item {% if request.path == '/cpage/' %}active {% endif %}  ">
-              <a class="nav-link" href="{% url 'cpage'%}">
+              <a class="nav-link" href="{% url 'cpage' None %}">
                 Categories
               </a>
             </li>
@@ -154,11 +155,19 @@
             </a>
            {% endif %}
             <!-- Search icon -->
-            <form class="form-inline ">
-
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
+              <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid"> 
+                  <form class="d-flex" role="search" method  = "get" action = "{% url 'search'  %}" >
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="text" name  = "search_querry" "{{ search_querry }}" placeholder="Search" aria-label="Search">
+                    <br>
+                    <button class="btn btn nav_search-btn " type="submit" style = "margin-left : 10px ;">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                  
+                 
+                </div>
+              </nav>
             </form>
             
           </div>

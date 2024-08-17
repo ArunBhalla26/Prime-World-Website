@@ -1,189 +1,97 @@
-{% extends "shop/base.html" %} {% load static %} {% block a %}
-<!-- info section -->
+<div id="additional-content">
+  <div style="padding-left: 3rem">
+    <section class="shop_section ">
+      <div class="container">                
+        <!-- {% if request.path == '/cpage/' %}
+            <div class="container">
+              <div class="heading_container heading_center">
+                <h2>
+                   Our Products
+                   
+                </h2>
+              </div>
+              <div class="row ">
+                {% for p in AllProducts %}
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                  <div class="box">
+                    <a href="{% url 'ppage' p.id %}">
+                      <div class="img-box">
+                        <img src="{{p.product_image.url}}" alt="" />
+                      </div>
+                      <div class="detail-box">
+                        <h6>{{p.title}}</h6>
+                        <h6>
+                          {% comment %} Price {% endcomment %}
+                          <span> ₹{{p.list_price}} </span>
+                        </h6>
+                      </div>
+                      <div class="new">
+                        <span> New </span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              
+            {% else %} -->
+        
+              {% comment %} products fetching{% endcomment %}
+              <div class="heading_container heading_center">
+                <h2 >{{category_name_data}}</h2>
+              </div>
+              <div class="row ">
+                {% for p in products %}
+                
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                  <div class="box">
+                    <a href="{% url 'ppage' p.id %}">
+                      <div class="img-box">
+                        <img src="{{p.product_image.url}}" alt="" />
+                      </div>
+                      <div class="detail-box">
+                        <h6>{{p.title}}</h6>
+                        <h6>
+                          {% comment %} Price {% endcomment %}
+                          <span> ₹{{p.list_price}} </span>
+                        </h6>
+                      </div>
+                      <div class="new">
+                        <span> New </span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
 
-<section class="info_section layout_padding2-top" style="border-radius: 3px">
-  <div class="social_container">
-    <div class="social_box">
-      <a href="">
-        <i class="fa fa-facebook" aria-hidden="true"></i>
-      </a>
-      <a href="">
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-      </a>
-      <a href="">
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-      </a>
-      <a href="">
-        <i class="fa fa-youtube" aria-hidden="true"></i>
-      </a>
-    </div>
-  </div>
-  <div class="info_container">
-    <div class="container d-flex align-items-center">
-      <div
-        class="row"
-        style="display: flex; align-items: center; justify-content: center"
-      >
-        <div class="col-md-6 col-lg-3">
-          <h6>ABOUT US</h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum
-            dolor sit amet,
-          </p>
-          <div class="col-md-6 col-lg-3"></div>
-          <div class="info_form">
-            <h5>Newsletter</h5>
-            <form action="#">
-              <input type="email" placeholder="Enter your email" />
-              <button>Subscribe</button>
-            </form>
+              <!-- {% endif %} -->
+          <!-- end shop section -->
+        <!-- <div class="row ">
+          {% for p in category_products %}
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <a href="{% url 'ppage' p.id %}">
+                <div class="img-box">
+                  <img src="{{p.product_image.url}}" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h6>{{p.title}}</h6>
+                  <h6>
+                    {% comment %} Price {% endcomment %}
+                    <span> ₹{{p.list_price}} </span>
+                  </h6>
+                </div>
+                <div class="new">
+                  <span> New </span>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <h6>NEED HELP</h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum
-            dolor sit amet,
-          </p>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <h6>CONTACT US</h6>
-          <div class="info_link-box">
-            <a href="">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span> Gb road 123 london Uk </span>
-            </a>
-            <a href="">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>+01 12345678901</span>
-            </a>
-            <a href="">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <span> demo@gmail.com</span>
-            </a>
-          </div>
-        </div>
+          {% endfor %}
+        </div> -->                
       </div>
-    </div>
+    </section>
   </div>
-
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
-</section>
-
-<section class="info_section layout_padding2-top">
-  <links class="text-center bg-body-tertiary ">
-   
-        <div class="social_container">
-          <div class="social_box">
-            <a href="">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-youtube" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      
-  </links>
-  <!-- Footer -->
-  <footer class="bg-body-tertiary text-center">
-    <!-- Grid container -->
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase info_form">Footer Content</h5>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque
-            ea quis molestias. Fugiat pariatur maxime quis culpa corporis vitae
-            repudiandae aliquam voluptatem veniam, est atque cumque eum delectus
-            sint!
-          </p>
-          <div class="info_form">
-            <h5>Newsletter</h5>
-            <form action="#">
-              <input type="email" placeholder="Enter your email" />
-              <button>Subscribe</button>
-            </form>
-          </div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-body">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-body">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-body">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-body">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-0">Links</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!" class="text-body">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-body">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-body">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-body">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
-      © 2020 Copyright:
-      <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-</section>
-
-<!-- end info section -->
-
-{% endblock a%}
+</div>

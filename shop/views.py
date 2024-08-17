@@ -23,6 +23,10 @@ class HomeView(TemplateView):
 class AboutView(TemplateView):
     template_name = "shop/why.html"
 
+class ShopView(TemplateView):
+    def get(self , request):
+        return render(request ,"shop/shop.html" , {'products'  : AllProducts(request) } )
+    
 class ContactView(TemplateView):
     template_name = "shop/contact.html"
 
@@ -32,9 +36,6 @@ class TestimonialView(TemplateView):
 def AllProducts(request):
     return Product.objects.all()
     
-class ShopView(TemplateView):
-    def get(self , request):
-        return render(request ,"shop/shop.html" , {'products'  : AllProducts(request) } )
 
 def Category_Filter(request , category_name_data = None):
     # for filter section 
@@ -43,11 +44,9 @@ def Category_Filter(request , category_name_data = None):
     for category  in CATEGORY_CHOICES:
         data = category[0].split()[0].replace(',' , '')
         category_names.append(data)
-
+ 
     # for displaying the collections
     if ( category_name_data == None or category_name_data not in category_names):
-        
-
         return render(request , "shop/categoryPage.html" , {'category_names' : category_names , 'AllProducts' : AllProducts(request)})
     
     category_products  = Product.objects.filter(category = category_name_data)
@@ -57,8 +56,7 @@ def Category_Filter(request , category_name_data = None):
         'category_name_data' : category_name_data ,
         'category_names' : category_names , 
         'category_products' : category_products,
-        'AllProducts' : AllProducts(request) ,
-        
+              
         }
 
     return render(request , "shop/categoryPage.html" , context ) 
@@ -67,7 +65,6 @@ class ProductDetailPageView(TemplateView):
     def get(self , request ,pk ):
         product = Product.objects.get(pk = pk)
         return render(request ,"shop\ProductDetailPage.html", {"product" : product} )
-
 
 class CustomerRegistrationFormView(TemplateView):
     def get(self , request):
@@ -103,12 +100,6 @@ def LogoutView(request):
     logout(request)
     messages.success(request , " Sucessfully Loged-Out ! ")
     return redirect('login')
-
-# class PasswordChangeDoneView(TemplateView):
-#     def get(self , request):
-#         logout(request)
-#         return redirect('accounts/login')
-    
 
 class AddressView(TemplateView):
     def get(self ,request):
@@ -163,3 +154,19 @@ class MyPasswordChangeView(auth_view.PasswordChangeView):
         logout(self.request)  # Call your specific function here
         messages.success(self.request, 'Your password was successfully updated!')
         return super().form_valid(form)
+            
+def Search (request) :
+
+        querry =request.GET["search_querry"] 
+
+        products = Product.objects.filter(title__icontains = querry )
+            
+        context = {"products" :products , 
+                   "search_querry" : querry ,
+                   }
+        if products :
+            return render(request , "shop/SearchPage.html" ,context = context  )
+        else :
+            return render (request , "shop/NoSearchFound.html")
+
+    

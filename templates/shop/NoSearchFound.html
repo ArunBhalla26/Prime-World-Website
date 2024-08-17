@@ -1,0 +1,19 @@
+{% extends "shop/base.html" %} {% load static %} {% block a %}
+
+<section class="Categories_section ">
+  <br>
+  <br>
+  <div class="heading_container heading_center" style="min-height: 300px;">
+    <h2>OOP'S !</h2>
+    <br />
+    <h3>
+      Looks There is Some Problem With The Search Term Or Item Is Not Availabel !
+
+      <br />
+      <br />
+      Want To Shop ? <a href= "{% url 'shop' %}"> <span style = "color : pink;" > click to View All Products :)</span></a>
+    </h3>
+    <img  height = 400px src="{% static 'images/no result found.png' %}" alt="">
+  </div>
+</section>
+{% endblock a %}

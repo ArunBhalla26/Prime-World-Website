@@ -14,7 +14,7 @@ urlpatterns = [
     path("cpage/",Category_Filter, name="cpage"),
     path("ppage/<int:pk>", ProductDetailPageView.as_view(), name="ppage"),
     # path("side/", SidebarPageView.as_view(), name="side") ,
-    path("cpage/<slug:category_name_data>", Category_Filter, name="cpage"),
+    path("cpage/<str:category_name_data>", Category_Filter, name="cpage"),
     path("accounts/signup/", CustomerRegistrationFormView.as_view(), name="signup"),
     path("accounts/login/", auth_view.LoginView.as_view(template_name  = "shop/LoginForm.html" ,authentication_form  = LoginForm ), name="login"),
     path("logout/", LogoutView, name="logout"),
@@ -30,7 +30,7 @@ urlpatterns = [
     path("add-to-cart/", AddToCartPageView.as_view(), name="add-to-cart"),
     path("cart/", ShowCartPageView.as_view(), name="showcart"),
     path("x/", xView.as_view(), name="x"),
-    
+    path("search/", Search, name="search"),
  
     
     
