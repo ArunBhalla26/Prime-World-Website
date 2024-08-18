@@ -23,7 +23,11 @@
             <i class="fa fa-filter" aria-hidden="true"></i>
             Filter
           </p>
-          <a href="{% url 'shop' %}" class="d-block mb-2"  style="padding-left: 2rem ">
+          {% comment %} {% if request.path == {{category_name_data}} %}
+          active
+         
+          {% endif %} {% endcomment %}
+          <a href="{% url 'cpage' %}" class="d-block mb-2"  style="padding-left: 2rem ">
             <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
             All Products
           </a>
@@ -41,64 +45,78 @@
         <div id="additional-content">
           <div style="padding-left: 3rem">
             <section class="shop_section ">
-              <div class="container">
-                <div class="heading_container heading_center">
-                  <h2>{{category_name_data}}</h2>
-                </div>
-                <div class="row ">
-
-                  {% for p in products %}
-
-                  <div class="col-sm-6 col-md-4 col-lg-3 ">
-                    <div class="box">
-                      <a href="{% url 'ppage' p.id %}">
-                        <div class="img-box">
-                          <img src="{{p.product_image.url}}" alt="" />
+              <div class="container">                
+                {% if request.path == '/cpage/' %}
+                    <div class="container">
+                      <div class="heading_container heading_center">
+                        <h2>
+                           Our Products
+                           
+                        </h2>
+                      </div>
+                      <div class="row ">
+                        {% for p in AllProducts %}
+                        
+                        <div class="col-sm-6 col-md-4 col-lg-3 ">
+                          <div class="box">
+                            <a href="{% url 'ppage' p.id %}">
+                              <div class="img-box">
+                                <img src="{{p.product_image.url}}" alt="" />
+                              </div>
+                              <div class="detail-box">
+                                <h6>{{p.title}}</h6>
+                                <h6>
+                                  {% comment %} Price {% endcomment %}
+                                  <span> ₹{{p.list_price}} </span>
+                                </h6>
+                              </div>
+                              <div class="new">
+                                <span> New </span>
+                              </div>
+                            </a>
+                          </div>
                         </div>
-                        <div class="detail-box">
-                          <h6>{{p.title}}</h6>
-                          <h6>
-                            {% comment %} Price {% endcomment %}
-                            <span> ₹{{p.list_price}} </span>
-                          </h6>
+                        {% endfor %}
+                      </div>
+                      
+                    {% else %} 
+                
+                  <!-- For SELECTED CATRGORY -->
+                      <div class="heading_container heading_center">
+                        <h2 >{{category_name_data}}</h2>
+                      </div>
+                      <div class="row ">
+                        {% for p in category_products %}
+                        
+                        <div class="col-sm-6 col-md-4 col-lg-3 ">
+                          <div class="box">
+                            <a href="{% url 'ppage' p.id %}">
+                              <div class="img-box">
+                                <img src="{{p.product_image.url}}" alt="" />
+                              </div>
+                              <div class="detail-box">
+                                <h6>{{p.title}}</h6>
+                                <h6>
+                                  {% comment %} Price {% endcomment %}
+                                  <span> ₹{{p.list_price}} </span>
+                                </h6>
+                              </div>
+                              <div class="new">
+                                <span> New </span>
+                              </div>
+                            </a>
+                          </div>
                         </div>
-                        <div class="new">
-                          <span> New </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-
-                <!-- end shop section -->
-                <!-- <div class="row ">
-                  {% for p in category_products %}
-                  <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                      <a href="{% url 'ppage' p.id %}">
-                        <div class="img-box">
-                          <img src="{{p.product_image.url}}" alt="" />
-                        </div>
-                        <div class="detail-box">
-                          <h6>{{p.title}}</h6>
-                          <h6>
-                            {% comment %} Price {% endcomment %}
-                            <span> ₹{{p.list_price}} </span>
-                          </h6>
-                        </div>
-                        <div class="new">
-                          <span> New </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div> -->
+                        {% endfor %}
+                      </div>
+        
+                      {% endif %} 
+                                             
               </div>
             </section>
           </div>
         </div>
+        
       </div>
     </div>
   </div>

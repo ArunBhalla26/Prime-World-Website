@@ -2,7 +2,7 @@
   <div style="padding-left: 3rem">
     <section class="shop_section ">
       <div class="container">                
-        <!-- {% if request.path == '/cpage/' %}
+        {% if request.path == '/cpage/' %}
             <div class="container">
               <div class="heading_container heading_center">
                 <h2>
@@ -35,14 +35,14 @@
                 {% endfor %}
               </div>
               
-            {% else %} -->
+            {% else %} 
         
               {% comment %} products fetching{% endcomment %}
               <div class="heading_container heading_center">
                 <h2 >{{category_name_data}}</h2>
               </div>
               <div class="row ">
-                {% for p in products %}
+                {% for p in category_products %}
                 
                 <div class="col-sm-6 col-md-4 col-lg-3 ">
                   <div class="box">
@@ -66,7 +66,7 @@
                 {% endfor %}
               </div>
 
-              <!-- {% endif %} -->
+              {% endif %} 
           <!-- end shop section -->
         <!-- <div class="row ">
           {% for p in category_products %}

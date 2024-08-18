@@ -39,12 +39,14 @@ def AllProducts(request):
 
 def Category_Filter(request , category_name_data = None):
     # for filter section 
+    category_name_data= category_name_data
     products = Product.objects.all()
     category_names = []
     for category  in CATEGORY_CHOICES:
         data = category[0].split()[0].replace(',' , '')
         category_names.append(data)
- 
+    # print("\n\n\n",category_name_data)
+    # print(category_names)
     # for displaying the collections
     if ( category_name_data == None or category_name_data not in category_names):
         return render(request , "shop/categoryPage.html" , {'category_names' : category_names , 'AllProducts' : AllProducts(request)})
@@ -52,7 +54,7 @@ def Category_Filter(request , category_name_data = None):
     category_products  = Product.objects.filter(category = category_name_data)
     
     context = {
-        'products' : products , 
+        # 'products' : products , 
         'category_name_data' : category_name_data ,
         'category_names' : category_names , 
         'category_products' : category_products,
