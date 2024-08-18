@@ -60,12 +60,11 @@ CATEGORY_CHOICES = (
         ('Toys', 'Toys'),
         ('Sports & Outdoors', 'Sports & Outdoors'),
         ('Beauty & Personal Care', 'Beauty & Personal Care'),
-        ('Health & Household', 'Health & Household'),
+        ('Grocery & Health ', 'Health & Household'),
         ('Jewelry', 'Jewelry'),
         ('Pet Supplies', 'Pet Supplies'),
         ('Music', 'Music'),
         ('Movies & TV', 'Movies & TV'),
-        ('Grocery', 'Grocery'),
         ('Software', 'Software'),
         ('Tools & Home Improvement', 'Tools & Home Improvement'),
         ('Baby Products', 'Baby Products'),
@@ -88,7 +87,7 @@ class Customer(models.Model):
         return str(self.id ,max_length=50)    
 
 class Product(models.Model):
-    title =models.CharField( max_length=50)
+    title =models.CharField( max_length=100)
     MRP = models. FloatField()
     list_price = models. FloatField()
     description = models.TextField()

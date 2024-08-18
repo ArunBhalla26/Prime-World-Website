@@ -14,7 +14,7 @@ class HomeView(TemplateView):
     def get (self , request):
         clothing = Product.objects.filter(category = 'Clothing')
         electronics = Product.objects.filter(category = 'Electronics')
-        beauty = Product.objects.filter(category = 'Beauty & Personal Care')
+        beauty = Product.objects.filter(category = 'Beauty')
         grocery = Product.objects.filter(category = 'Grocery')
         jewelry = Product.objects.filter(category = 'Jewelry')
         
