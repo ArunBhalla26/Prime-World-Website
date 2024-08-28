@@ -13,7 +13,7 @@ Prime World is a Django-based e-commerce platform designed to offer a seamless s
 - **PostgreSQL Database:** Leveraging PostgreSQL for data storage to ensure reliability and scalability.
 
 
-## Click To View The Viedo Demo !
+## Click To View The Video Demo !
 
 [![Watch Video](https://github.com/user-attachments/assets/43edbe52-a793-4981-88ec-ee651d7846ee)](https://youtu.be/Wtf_L0pvn6w)
 
